@@ -16,8 +16,6 @@ const HERO_ICONS = {
 const GRID_ICONS = [Clapperboard, Factory, Sparkles, Megaphone];
 
 function MediaRow({ row, media, reverse, index, onCtaClick }) {
-    const [ready, setReady] = motion.useAnimation ? [false, null] : [false, null];
-    void ready;
     const video = media?.src ? media : null;
 
     return (

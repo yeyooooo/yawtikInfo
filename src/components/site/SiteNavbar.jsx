@@ -1,7 +1,7 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { BRAND, SECTORS } from "@/data/siteConfig";
+import { BRAND, HOME_PAGE, SECTORS } from "@/data/siteConfig";
 
 function NavButton({ children, onClick }) {
     return (
@@ -27,6 +27,7 @@ export default function SiteNavbar({ sector, onCtaClick, queueHomeScroll }) {
     }, []);
 
     const homePage = location.pathname === "/";
+    const ctaLabel = sector ? sector.hero.cta : HOME_PAGE.hero.ctaSecondary;
 
     const links = useMemo(() => {
         if (homePage) {
@@ -110,7 +111,7 @@ export default function SiteNavbar({ sector, onCtaClick, queueHomeScroll }) {
                         className="inline-flex items-center gap-2 rounded-none bg-primary px-4 py-2 text-xs font-body font-bold uppercase tracking-widest text-primary-foreground transition hover:bg-primary/90"
                         data-testid="navbar-cta"
                     >
-                        {sector ? sector.hero.cta : "Agendar cotizacion"}
+                        {ctaLabel}
                         <ArrowUpRight className="h-4 w-4" />
                     </button>
                 </div>
@@ -146,7 +147,7 @@ export default function SiteNavbar({ sector, onCtaClick, queueHomeScroll }) {
                             className="mt-3 inline-flex items-center justify-between rounded-none bg-primary px-4 py-3 text-sm font-body font-bold uppercase tracking-widest text-primary-foreground"
                             data-testid="navbar-mobile-cta"
                         >
-                            {sector ? sector.hero.cta : "Agendar cotizacion"}
+                            {ctaLabel}
                             <ArrowUpRight className="h-4 w-4" />
                         </button>
 

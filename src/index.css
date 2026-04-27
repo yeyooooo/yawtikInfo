@@ -6,26 +6,30 @@
 
 @layer base {
     :root {
-        --background: 105 18% 7%;
-        --foreground: 52 39% 96%;
-        --card: 108 14% 10%;
-        --card-foreground: 52 39% 96%;
-        --popover: 108 14% 10%;
-        --popover-foreground: 52 39% 96%;
-        --primary: 88 36% 47%;
-        --primary-foreground: 105 24% 8%;
-        --secondary: 103 12% 15%;
-        --secondary-foreground: 52 39% 96%;
-        --muted: 102 11% 15%;
-        --muted-foreground: 52 22% 84%;
-        --accent: 42 44% 69%;
-        --accent-foreground: 105 24% 8%;
+        --background: 224 36% 8%;
+        --foreground: 0 0% 100%;
+        --card: 224 26% 11%;
+        --card-foreground: 0 0% 100%;
+        --popover: 224 26% 11%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 224 100% 50%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 223 22% 16%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 223 20% 14%;
+        --muted-foreground: 215 24% 83%;
+        --accent: 198 100% 73%;
+        --accent-foreground: 224 36% 8%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 102 9% 21%;
-        --input: 102 9% 21%;
-        --ring: 88 36% 47%;
+        --border: 223 18% 22%;
+        --input: 223 18% 22%;
+        --ring: 224 100% 50%;
         --radius: 0px;
+        --theme-primary-rgb: 37, 99, 235;
+        --theme-accent-rgb: 117, 217, 255;
+        --page-base-rgb: 10, 10, 15;
+        --page-shadow-rgb: 12, 31, 79;
         --glass-bg: rgba(255, 255, 255, 0.04);
         --glass-border: rgba(255, 255, 255, 0.1);
         --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
@@ -44,14 +48,14 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background:
-            radial-gradient(circle at top left, rgba(138, 164, 77, 0.08) 0%, transparent 28%),
-            radial-gradient(circle at top right, rgba(230, 202, 142, 0.08) 0%, transparent 24%),
-            #070907;
-        background-color: #070907;
+            radial-gradient(circle at top left, rgba(var(--theme-primary-rgb), 0.1) 0%, transparent 28%),
+            radial-gradient(circle at top right, rgba(var(--theme-accent-rgb), 0.08) 0%, transparent 24%),
+            rgb(var(--page-base-rgb));
+        background-color: rgb(var(--page-base-rgb));
     }
     ::selection {
         background: hsl(var(--primary));
-        color: #11170e;
+        color: hsl(var(--primary-foreground));
     }
     /* Custom thin scrollbar */
     ::-webkit-scrollbar {
@@ -59,13 +63,13 @@
         height: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #070907;
+        background: rgb(var(--page-base-rgb));
     }
     ::-webkit-scrollbar-thumb {
-        background: rgba(138, 164, 77, 0.42);
+        background: rgba(var(--theme-primary-rgb), 0.42);
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(138, 164, 77, 0.68);
+        background: rgba(var(--theme-primary-rgb), 0.68);
     }
 }
 
@@ -92,12 +96,12 @@
         padding: 1px;
         background: linear-gradient(
             180deg,
-            rgba(138, 164, 77, 0.35) 0%,
+            rgba(var(--theme-primary-rgb), 0.35) 0%,
             rgba(255, 255, 255, 0.1) 20%,
             rgba(255, 255, 255, 0) 40%,
             rgba(255, 255, 255, 0) 60%,
             rgba(255, 255, 255, 0.1) 80%,
-            rgba(230, 202, 142, 0.22) 100%
+            rgba(var(--theme-accent-rgb), 0.22) 100%
         );
         -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
@@ -109,14 +113,14 @@
 
     .liquid-glass-strong {
         background:
-            linear-gradient(180deg, rgba(230, 202, 142, 0.18) 0%, rgba(138, 164, 77, 0.2) 100%),
-            rgba(138, 164, 77, 0.15);
+            linear-gradient(180deg, rgba(var(--theme-accent-rgb), 0.18) 0%, rgba(var(--theme-primary-rgb), 0.2) 100%),
+            rgba(var(--theme-primary-rgb), 0.15);
         background-blend-mode: luminosity;
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(138, 164, 77, 0.5);
+        border: 1px solid rgba(var(--theme-primary-rgb), 0.5);
         box-shadow:
-            0 0 24px rgba(138, 164, 77, 0.16),
+            0 0 24px rgba(var(--theme-primary-rgb), 0.16),
             inset 0 1px 1px rgba(255, 255, 255, 0.18);
         position: relative;
         overflow: hidden;
@@ -127,10 +131,10 @@
     }
     .liquid-glass-strong:hover {
         background:
-            linear-gradient(180deg, rgba(230, 202, 142, 0.22) 0%, rgba(138, 164, 77, 0.26) 100%),
-            rgba(138, 164, 77, 0.2);
+            linear-gradient(180deg, rgba(var(--theme-accent-rgb), 0.22) 0%, rgba(var(--theme-primary-rgb), 0.26) 100%),
+            rgba(var(--theme-primary-rgb), 0.2);
         box-shadow:
-            0 0 30px rgba(138, 164, 77, 0.22),
+            0 0 30px rgba(var(--theme-primary-rgb), 0.22),
             inset 0 1px 1px rgba(255, 255, 255, 0.25);
         transform: translateY(-1px);
     }
@@ -143,10 +147,10 @@
         background: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.6) 0%,
-            rgba(138, 164, 77, 0.36) 20%,
+            rgba(var(--theme-primary-rgb), 0.36) 20%,
             rgba(255, 255, 255, 0) 40%,
             rgba(255, 255, 255, 0) 60%,
-            rgba(230, 202, 142, 0.24) 80%,
+            rgba(var(--theme-accent-rgb), 0.24) 80%,
             rgba(255, 255, 255, 0.6) 100%
         );
         -webkit-mask:

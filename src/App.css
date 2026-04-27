@@ -1,8 +1,12 @@
 .App {
-    background:
-        radial-gradient(circle at top left, rgba(138, 164, 77, 0.08) 0%, transparent 24%),
-        radial-gradient(circle at top right, rgba(230, 202, 142, 0.06) 0%, transparent 20%),
-        #070907;
     min-height: 100vh;
     overflow-x: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(var(--theme-primary-rgb), 0.08) 0%, transparent 24%),
+        radial-gradient(circle at top right, rgba(var(--theme-accent-rgb), 0.06) 0%, transparent 20%),
+        rgb(var(--page-base-rgb));
+    color: hsl(var(--foreground));
+    transition:
+        background 220ms ease,
+        color 220ms ease;
 }
