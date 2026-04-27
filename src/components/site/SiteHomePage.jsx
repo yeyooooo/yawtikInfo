@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import {
     ArrowUpRight,
+    Building2,
     Clapperboard,
     Factory,
-    Gem,
     Leaf,
     Megaphone,
     Mic2,
@@ -20,7 +20,7 @@ import { SITE_THEMES } from "@/data/siteThemes";
 const SECTOR_ICONS = {
     agro: Leaf,
     gastro: UtensilsCrossed,
-    premium: Gem,
+    premium: Building2,
     figure: Mic2,
 };
 
@@ -55,6 +55,7 @@ export default function SiteHomePage({ onOpenContact }) {
                     className="absolute inset-0 z-0 h-full w-full object-cover object-center"
                     style={{ filter: "saturate(0.95) contrast(1.03) brightness(0.78)" }}
                     testId="home-hero-video"
+                    eager
                 />
                 <div
                     className="absolute inset-0 z-0"
@@ -168,7 +169,7 @@ export default function SiteHomePage({ onOpenContact }) {
                                 <div className="mt-8 grid gap-5 sm:grid-cols-2">
                                     <div>
                                         <div className="text-[10px] font-body font-bold uppercase tracking-[0.28em] text-white/45">
-                                            Seleccion
+                                            Selección
                                         </div>
                                         <div className="mt-2 text-3xl font-heading italic text-white">
                                             4
@@ -213,7 +214,7 @@ export default function SiteHomePage({ onOpenContact }) {
 
                     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
                         {SECTORS.map((sector, index) => {
-                            const Icon = SECTOR_ICONS[sector.theme] || Gem;
+                            const Icon = SECTOR_ICONS[sector.theme] || Building2;
                             const theme = SITE_THEMES[sector.theme] || SITE_THEMES.home;
 
                             return (

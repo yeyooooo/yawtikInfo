@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, Clapperboard, Factory, Gem, Leaf, Megaphone, Mic2, SlidersHorizontal, Sparkles, UtensilsCrossed, X } from "lucide-react";
+import { ArrowUpRight, Building2, Check, Clapperboard, Factory, Leaf, Megaphone, Mic2, SlidersHorizontal, Sparkles, UtensilsCrossed, X } from "lucide-react";
 import BlurText from "@/components/yawtik/BlurText";
 import HlsVideo from "@/components/yawtik/HlsVideo";
 import SectionDivider from "@/components/yawtik/SectionDivider";
@@ -9,15 +9,13 @@ import { HOME_PAGE } from "@/data/siteConfig";
 const HERO_ICONS = {
     agro: Leaf,
     gastro: UtensilsCrossed,
-    premium: Gem,
+    premium: Building2,
     figure: Mic2,
 };
 
 const GRID_ICONS = [Clapperboard, Factory, Sparkles, Megaphone];
 
-function MediaRow({ row, media, reverse, index, onCtaClick }) {
-    const video = media?.src ? media : null;
-
+function MediaRow({ row, reverse, index, onCtaClick }) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -47,23 +45,14 @@ function MediaRow({ row, media, reverse, index, onCtaClick }) {
 
             <div className="liquid-glass relative h-[340px] overflow-hidden rounded-none border border-white/8 md:h-[460px]">
                 <img src={row.image} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-                {video ? (
-                    <HlsVideo
-                        src={video.src}
-                        className="absolute inset-0 z-10 h-full w-full object-cover opacity-85"
-                        style={{ filter: "saturate(0.9) contrast(1.02) brightness(0.7)" }}
-                        testId={`showcase-video-${index}`}
-                    />
-                ) : null}
                 <div
-                    className="absolute inset-0 z-20"
+                    className="absolute inset-0 z-10"
                     style={{
-                        background:
-                            "linear-gradient(135deg, rgba(var(--theme-primary-rgb), 0.22), transparent 42%, rgba(var(--theme-accent-rgb), 0.08) 100%)",
+                        background: "linear-gradient(135deg, rgba(var(--theme-primary-rgb), 0.18), transparent 42%, rgba(var(--theme-accent-rgb), 0.08) 100%)",
                     }}
                 />
-                <div className="absolute inset-x-0 bottom-0 z-20 h-40 bg-gradient-to-t from-[rgb(var(--page-base-rgb))] via-[rgb(var(--page-base-rgb))]/55 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 z-30 flex items-center justify-between gap-4 text-[10px] font-body font-bold uppercase tracking-[0.28em] text-white/75">
+                <div className="absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-[rgb(var(--page-base-rgb))] via-[rgb(var(--page-base-rgb))]/55 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between gap-4 text-[10px] font-body font-bold uppercase tracking-[0.28em] text-white/75">
                     <span>{row.label}</span>
                     <span className="flex items-center gap-1.5">
                         <span className="inline-block h-1.5 w-1.5 animate-pulse bg-primary" />
@@ -303,11 +292,18 @@ export default function SectorPage({ sector, onCtaClick }) {
                         "radial-gradient(circle at 18% 18%, rgba(var(--theme-primary-rgb), 0.18) 0%, rgba(var(--page-shadow-rgb), 0.28) 28%, rgba(var(--page-base-rgb), 0.92) 66%, rgb(var(--page-base-rgb)) 100%)",
                 }}
             >
+                <img
+                    src={sector.card.image}
+                    alt=""
+                    className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+                    loading="eager"
+                />
                 <HlsVideo
                     src={sector.media.hero.src}
                     className="absolute inset-0 h-full w-full object-cover object-center z-0"
                     style={{ filter: "saturate(0.92) contrast(1.02) brightness(0.78)" }}
                     testId={`${sector.slug}-hero-video`}
+                    eager
                 />
                 <div
                     className="absolute inset-0 z-0"
@@ -472,6 +468,12 @@ export default function SectorPage({ sector, onCtaClick }) {
             <SectionDivider />
 
             <section id="methodology" className="relative overflow-hidden py-24 md:py-32">
+                <img
+                    src={sector.card.image}
+                    alt=""
+                    className="absolute inset-0 z-0 h-full w-full object-cover"
+                    loading="lazy"
+                />
                 <HlsVideo
                     src={sector.media.ambient.src}
                     className="absolute inset-0 z-0 h-full w-full object-cover"
@@ -574,7 +576,6 @@ export default function SectorPage({ sector, onCtaClick }) {
                             <MediaRow
                                 key={row.title}
                                 row={row}
-                                media={index % 2 === 0 ? sector.media.ambient : sector.media.hero}
                                 reverse={index % 2 === 1}
                                 index={index}
                                 onCtaClick={onCtaClick}
@@ -633,6 +634,12 @@ export default function SectorPage({ sector, onCtaClick }) {
             <SectionDivider />
 
             <section className="relative overflow-hidden px-6 py-28 md:py-36 lg:px-10">
+                <img
+                    src={sector.card.image}
+                    alt=""
+                    className="absolute inset-0 z-0 h-full w-full object-cover"
+                    loading="lazy"
+                />
                 <HlsVideo
                     src={sector.media.ambient.src}
                     className="absolute inset-0 z-0 h-full w-full object-cover"
@@ -686,6 +693,7 @@ export default function SectorPage({ sector, onCtaClick }) {
             <SiteFooterCta
                 content={{ ...sector.cta, footerCopy: HOME_PAGE.footer.copy }}
                 media={sector.media}
+                fallbackImage={sector.card.image}
                 onPrimaryClick={onCtaClick}
                 onSecondaryClick={onCtaClick}
             />

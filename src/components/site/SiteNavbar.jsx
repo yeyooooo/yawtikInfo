@@ -42,8 +42,8 @@ export default function SiteNavbar({ sector, onCtaClick, queueHomeScroll }) {
         return [
             { label: "Sectores", type: "route", to: "/", targetId: "sectors" },
             { label: "Modelo", type: "scroll", id: "methodology" },
-            { label: "Ejecucion", type: "scroll", id: "expertise" },
-            { label: "Inversion", type: "scroll", id: "pricing" },
+            { label: "Ejecución", type: "scroll", id: "expertise" },
+            { label: "Inversión", type: "scroll", id: "pricing" },
             { label: "Contacto", type: "contact" },
         ];
     }, [homePage]);
@@ -120,7 +120,7 @@ export default function SiteNavbar({ sector, onCtaClick, queueHomeScroll }) {
                     className="liquid-glass rounded-none p-2 md:hidden"
                     onClick={() => setOpen((value) => !value)}
                     data-testid="navbar-mobile-toggle"
-                    aria-label="Menu"
+                    aria-label="Menú"
                 >
                     {open ? <X className="h-5 w-5 text-white" /> : <Menu className="h-5 w-5 text-white" />}
                 </button>

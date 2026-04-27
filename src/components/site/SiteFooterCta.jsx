@@ -3,9 +3,17 @@ import { ArrowUpRight } from "lucide-react";
 import { BRAND } from "@/data/siteConfig";
 import HlsVideo from "@/components/yawtik/HlsVideo";
 
-export default function SiteFooterCta({ content, media, onPrimaryClick, onSecondaryClick }) {
+export default function SiteFooterCta({ content, media, fallbackImage, onPrimaryClick, onSecondaryClick }) {
     return (
         <section id="contact" className="relative overflow-hidden" data-testid="cta-footer">
+            {fallbackImage ? (
+                <img
+                    src={fallbackImage}
+                    alt=""
+                    className="absolute inset-0 z-0 h-full w-full object-cover"
+                    loading="lazy"
+                />
+            ) : null}
             {media?.ambient?.src ? (
                 <HlsVideo
                     src={media.ambient.src}
